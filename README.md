@@ -47,3 +47,36 @@
     PE,DF,10
     MG,PE,40
     ```
+## Como utilizar?
+
+- Para iniciar o console, acesse *\src\BestRoute.ConsoleApp*, pois é lá que se encontra o arquivo *BestRoute.ConsoleApp.csproj*. Execute o comando **dotnet run** passando o diretório completo do arquivo de entrada:
+
+    ```
+    dotnet run C:\BestRoute\attachments\input-routes.csv
+    ```
+
+    ![dotnet-run-console](attachments/dotnet-run-console.png)
+
+- Agora, basta informar a rota seguindo o padrão **DE-PARA** para que o sistema informe o melhor caminho e a distância total a ser percorrida:
+
+    ![console-route-parameter](attachments/console-route-parameter.png)
+
+- O próximo passo é iniciar a API. Acesse *\src\BestRoute.Api* e, da mesma forma que fizemos com o console, execute o comando **dotnet run** passando o diretório completo do arquivo de entrada:
+
+    ```
+    dotnet run C:\BestRoute\attachments\input-routes.csv
+    ```
+
+    ![dotnet-run-api](attachments/dotnet-run-api.png)
+
+- Com isso, podemos obter a melhor rota através de um GET, fornecendo os locais de partida e destino como parâmetros. Por exemplo, para sabermos a distância entre **SP** e **PE**, a URL seria esta: https://localhost:5001/api/route/SP/PE. A seguir, uma chamada utilizando o **Postman**:
+
+    ![get-postman](attachments/get-postman.png)
+
+- É possível inserir uma nova rota através de um POST para o endereço https://localhost:5001/api/route. Neste caso, um JSON será enviado pelo body do request. Todos os campos são obrigatórios, sendo que **Distance** deve ser maior que zero, conforme o exemplo:
+
+    ![post-postman](attachments/post-postman.png)
+
+- Para a execução dos testes unitários, é preciso acessar *\tests\BestRoute.Tests* e rodar o comando **dotnet test**:
+
+    ![dotnet-test](attachments/dotnet-test.png)
